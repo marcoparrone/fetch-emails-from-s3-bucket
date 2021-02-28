@@ -40,7 +40,7 @@ then, after reloading the file, you can run the following commands:
 
 ```sh
 check-s3-emails # Just for checking if there are some emails, by using the "aws s3 ls" command.
-fetch-s3-emails # To download the emails, removing them from the bucket.
+fetch-s3-emails # To download the emails, removing them from the bucket. ATTENTION!: the script will remove EVERYTHING under s3://BUCKET/PREFIX/.
 mutt # For reading the emails.
 spamisspam # If you are sure that the emails in the spam folder are really spam, with this command you can train spamassassin the recognize them as spam.
 hamisham # If you are sure that the emails in the inbox folder aren't spam, with this command you can train spamassassin to recognize them as ham (not spam).
