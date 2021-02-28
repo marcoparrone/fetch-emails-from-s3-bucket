@@ -1,4 +1,4 @@
-# fetch-emails-from-s3-bucket-cli
+# fetch-emails-from-s3-bucket
 
 This container image packages awscli, procmail, spamassassin, dos2unix, mutt and lynx, plus some configuration files and a pair of scripts.
 
@@ -17,8 +17,8 @@ If you use docker, replace docker=podman with docker=docker in the Makefile.
 ## Installation
 
 ```sh
-git clone git@github.com:marcoparrone/fetch-emails-from-s3-bucket-cli.git
-cd fetch-emails-from-s3-bucket-cli
+git clone git@github.com:marcoparrone/fetch-emails-from-s3-bucket.git
+cd fetch-emails-from-s3-bucket
 ls -la config
 # ... check in the config folder if there is some seetting that you want to customize ...
 make
@@ -29,11 +29,11 @@ make
 Add the following lines in your ~/.bash_aliases or in your ~/.bashrc, replacing BUCKET and PREFIX with the s3 bucket and the prefix where the emails are delivered, and replacing REGION with the region of the bucket (for example, eu-west-1):
 
 ```sh
-alias check-s3-emails='podman run --rm -it -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -w /root marcoparrone/fetch-emails-from-s3-bucket-cli check-s3-emails.sh --region=REGION s3://BUCKET/PREFIX/'
-alias fetch-s3-emails='podman run --rm -it -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -v ~/.spamassassin:/root/.spamassassin -w /root marcoparrone/fetch-emails-from-s3-bucket-cli fetch-s3-emails.sh --region=REGION s3://BUCKET/PREFIX/'
-alias mutt='podman run --rm -it --network none -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -w /root marcoparrone/fetch-emails-from-s3-bucket-cli mutt'
-alias spamisspam='podman run --rm -it --network none -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -v ~/.spamassassin:/root/.spamassassin -w /root marcoparrone/fetch-emails-from-s3-bucket-cli sa-learn --spam /root/Mail/spam/'
-alias hamisham='podman run --rm -it --network none -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -v ~/.spamassassin:/root/.spamassassin -w /root marcoparrone/fetch-emails-from-s3-bucket-cli sa-learn --ham /root/Mail/inbox/'
+alias check-s3-emails='podman run --rm -it -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -w /root marcoparrone/fetch-emails-from-s3-bucket check-s3-emails.sh --region=REGION s3://BUCKET/PREFIX/'
+alias fetch-s3-emails='podman run --rm -it -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -v ~/.spamassassin:/root/.spamassassin -w /root marcoparrone/fetch-emails-from-s3-bucket fetch-s3-emails.sh --region=REGION s3://BUCKET/PREFIX/'
+alias mutt='podman run --rm -it --network none -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -w /root marcoparrone/fetch-emails-from-s3-bucket mutt'
+alias spamisspam='podman run --rm -it --network none -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -v ~/.spamassassin:/root/.spamassassin -w /root marcoparrone/fetch-emails-from-s3-bucket sa-learn --spam /root/Mail/spam/'
+alias hamisham='podman run --rm -it --network none -v ~/.aws:/root/.aws -v ~/Mail:/root/Mail -v ~/.spamassassin:/root/.spamassassin -w /root marcoparrone/fetch-emails-from-s3-bucket sa-learn --ham /root/Mail/inbox/'
 ```
 
 then, after reloading the file, you can run the following commands:
