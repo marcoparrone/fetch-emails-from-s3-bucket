@@ -1,0 +1,5 @@
+set mbox_type=Maildir
+set folder=$HOME/Mail
+set spoolfile=$HOME/Mail/inbox
+set header_cache=$HOME/Mail/.hcache
+auto_view text/x-vcard text/html text/enriched
